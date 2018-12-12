@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>国际学校四库全书 - 项目数据库</title>
+	<link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_946378_kym42x76oc.css">
+	<link rel="stylesheet" href="../css/data/data.css">
+</head>
+<body>
+	<div id="app" v-cloak>
+	<div class="listBox">
+		<div class="header">
+			<div class="input-group">
+	            <span class="input-group-addon iconfont icon-sousuo1" @click="searchClick"></span>
+	            <input ref="input" type="text" class="form-control" placeholder="请输入项目名或其他关键词" onfocus="this.placeholder=''" onblur="this.placeholder='请输入项目名或其他关键词'" @keyup.enter="searchEnterFun">
+	            <span class="input-group-addon" style="font-size: 12px;color: #7b7b7b;">搜索到{{tatalNum.count}}条</span>
+	        </div>
+		</div>
+		<div class="list" v-for="item in list">
+			<a v-bind:href="'./detail.html?School_name='+item.id">
+				<img src="http://data.xinxueshuo.cn/nsi/assets/img/project.jpg" alt="" class="img-responsive">
+				<p class="subjectname">{{item.subjectname}}</p>
+				<p class="subjectintroduction">{{item.subjectintroduction}}</p>
+				<p class="pull-right company">发布单位：{{item.company}}</p>
+			</a>
+		</div>
+		<div class="more" :class="isMore ? 'show':'hide'">正在加载中</div>
+	</div>
+	<div class="back"  @click="goBack">
+		<a><i class="iconfont icon-ziyuan"></i></a>
+	</div>
+</div>
+</body>
+</html><script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue  "></script>
+<script src="../js/config.js"></script>
+<script src="../js/data/data.js"></script>

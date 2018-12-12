@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>教育人才库 — 详情</title>
+	<link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_946378_kym42x76oc.css">
+	<link rel="stylesheet" href="../css/talent/detail.css">
+</head>
+<body>
+<div id="app"  v-cloak>
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<img :src="list.sex == 1 || list.sex == '男'? 'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png' : 'http://img.zcool.cn/community/01a29158b69c22a801219c774b4b0b.png@1280w_1l_2o_100sh.png'">
+				</div>
+				<div class="col-xs-9">
+					<p class="title">{{list.name}}</p>
+					<div class="col-xs-7">
+						<span>期望年薪：<span class="answer">{{list.expectSalary}}</span></span>
+					</div>
+					<div class="col-xs-5">
+						<span>经验：<span class="answer">{{list.workYear | timeNull}}</span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="msgBox">
+			<span class="line"></span>
+			<span class="title">基本信息</span>
+			<ul class="clearfix">
+				<li><span>姓名：{{list.name}}</span></li>
+				<li><span>专业：{{list.major}}</span></li>
+				<li><span>最高学历：{{list.education}}</span></li>
+				<li><span>期望工作职位：{{list.expectWorkPosition}}</span></li>
+				<li><span class="answer">现工作地点：{{list.workPlace}}</span></li>
+				<li><span>期望工作地点：{{list.expectWorkPlace}}</span></li>
+			</ul>
+	    </div>
+	    <div class="msgBox">
+			<span class="line"></span>
+			<span class="title">其他信息</span>
+			<ul class="clearfix">
+				<li><span>工作经历: {{list.workExperience | substringP}}</span></li>
+				<li><span>教育背景：{{list.educationBackground | substringP}}</span></li>
+				<li><span>培训经历：{{list.trainingBackground | substringP}}</span></li>
+				<li><span>其他要求：{{list.other | substringP}}</span></li>
+			</ul>
+	    </div>
+	    <div class="msgBox">
+			<span class="line"></span>
+			<span class="title">联系方式</span>
+			<ul class="clearfix">
+				<li><span>联系人：新学说-张老师</span></li>
+				<li><span>电话：15010927730</span></li>
+				<li><span>邮箱：zhangwen@xinxueshuo.cn</span></li>
+			</ul>
+	    </div>
+	</div>
+	<div class="back"  @click="goBack">
+		<a><i class="iconfont icon-ziyuan"></i></a>
+	</div>
+</div>
+<p class="want">了解更多内容，请访问在线四库全书:data.xinxueshuo.xn</p>	
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue  "></script>
+<script src="../js/config.js"></script>
+<script src="../js/talent/detail.js"></script>

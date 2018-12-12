@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+	<title>国际学校四库全书</title>
+	<link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_946378_kym42x76oc.css">
+	<link rel="stylesheet" href="./css/index/index.css">
+</head>
+<body>
+<div id="app">
+	<div class="header">
+		<img src="http://data.xinxueshuo.cn/nsi/assets/img/index/logo.png" alt="">
+		<div class="input-group">
+			<span class="input-group-addon iconfont icon-sousuo1" @click="searchClick"></span>
+            <input ref="input" type="text" class="form-control" placeholder="请输入国际学校名或地区等关键词" onfocus="this.placeholder=''" onblur="this.placeholder='请输入国际学校名或地区等关键词'"@keyup.enter="searchEnterFun">
+        </div>
+	</div>
+	<div class="hotSearch">
+		<p>一一一 热门搜索 一一一</p>
+	</div>
+	<div class="searchKey">
+		<a href="../nsi-web-phone/school/detail.html?School_name=100053"><span>海嘉国际双语学校</span></a>
+		<a href="../nsi-web-phone/school/detail.html?School_name=100048"><span>北京乐成国际学校</span></a>
+		<a href="../nsi-web-phone/school/detail.html?School_name=100139"><span>北京京西学校</span></a>
+		<a href="../nsi-web-phone/school/detail.html?School_name=100047"><span>北京BISS国际学校</span></a>
+		<a href="../nsi-web-phone/school/detail.html?School_name=100495"><span>上海哈罗国际学校</span></a>
+		<a href="../nsi-web-phone/school/detail.html?School_name=100122"><span>上海世界外国语中学</span></a>
+		<a href="../nsi-web-phone/school/detail.html?School_name=101194"><span>上海融育北美教育学校</span></a>
+		<a href="../nsi-web-phone/school/detail.html?School_name=100065"><span>成都美视国际学校</span></a>
+		<a href="../nsi-web-phone/school/detail.html?School_name=100192"><span>深圳国际交流学院</span></a>
+		<a href="../nsi-web-phone/school/detail.html?School_name=100954"><span>铁岭枫树岭国际学校</span></a>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3 part">
+					<a href="./school/school.html">
+						<span class="iconfont icon-jigoujianzhu"></span>
+						<p>学校库</p>
+					</a>
+				</div>
+				<div class="col-xs-3 part">
+					<a href="./company/company.html">
+						<span class="iconfont icon-jianzhu"></span>
+						<p>机构库</p>
+					</a>
+				</div>
+				<div class="col-xs-3 part">
+					<a href="./talent/talent.html">
+						<span class="iconfont icon-rencai"></span>
+						<p>人才库</p>
+					</a>
+				</div>
+				<div class="col-xs-3 part">
+					<a href="./data/data.html">
+						<span class="iconfont icon-recently"></span>
+						<p>项目库</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue  "></script>
+<script src="./js/config.js"></script>
+<script src="./js/index/index.js"></script>
