@@ -30,9 +30,19 @@ var newAjax = new Vue({
 	el:'#app',
 	data:{
 		list:[],
+		wxShareInfo:{
+            title:"",
+            imgUrl:"",
+            href:window.location.href,
+            desc:""
+        }
 	},
+	
 	mounted: function(){
-		this.getData();
+		this.getData()
+		if(weiChatInit.isWeixinBrowser()){
+            setTimeout(weiChatInit.wxReady(this.wxShareInfo),500)
+        }
 	},
 	methods: {
 		getData: function(){
@@ -45,6 +55,9 @@ var newAjax = new Vue({
 				},
 				success: function(res){
 					that.list=res.data;
+					that.wxShareInfo.title = '国际学校库 - '+that.list.schoolName
+					that.wxShareInfo.imgUrl = that.list.schoolLogo=="" || that.list.schoolLogo==null ? "http://data.xinxueshuo.cn/nsi/assets/img/schoolNoPic.png":"http://data.xinxueshuo.cn" + that.list.schoolLogo 
+					that.wxShareInfo.desc = '学校类型：'+that.list.schoolProperties+'，成立时间：' + that.list.foundedTime + '，省份：' + that.list.areas
 				},
 				error:function(res){
 
@@ -61,6 +74,7 @@ var newAjax = new Vue({
                 window.history.go(-1);
             }
 		},
+
 	}
 	
 });

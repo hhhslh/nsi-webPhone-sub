@@ -17,7 +17,7 @@ a:hover{
     padding-left: 14px;
     font-size: 18px;
     font-weight: bold;
-    color:#095375;
+    color:#215089;
 }
 .col-xs-4{
 	padding-left: 0;
@@ -36,14 +36,15 @@ a:hover{
 }
 .line{
 	border-left: 5px solid #c5a86a ;
-	font-size: 20px;
-	padding:3px 0;
+	font-size: 17px;
+    padding: 6px 0;
 }
 .msgBox span.title{
 	background-color:#215089;
 	color:#fff;
-	font-size: 20px;
-	padding:3px 10px;
+	font-size: 17px;
+    padding: 6px 14px;
+    border-radius: 0 2px 2px 0;
 }
 ul.clearfix:after{
 	clear:both;
@@ -58,6 +59,7 @@ ul.clearfix:after{
 	color:#c5a86a ;
 	margin-top: 10px;
 	font-size: 16px;
+	line-height:1.5;
 }
 .msgBox ul li span{
 	color:#7b7b7b;
@@ -82,7 +84,7 @@ p.want{
     height: 40px;
     text-align: center;
     line-height: 40px;
-    background-color: #3f3f3f;
+    background-color: #215089;
     border-radius: 8px;
     color: #fafafa;
     box-shadow: 0 5px 15px 0 rgba(15,37,64,.2);

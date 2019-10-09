@@ -1,3 +1,23 @@
+function getQuery(){
+    var str = (location.search.length > 0 ? location.search.substring(1) : ''),
+    args = {},
+    items = str.length ? str.split("&") : [],
+    item = null,
+    name = null,
+    value = null;
+    for (i=0; i < items.length; i++){
+        item = items[i].split("=");
+        name = decodeURIComponent(item[0]);
+        value = decodeURIComponent(item[1]);
+        if (name.length) {
+            args[name] = value;
+        }
+    }
+    return args;
+}
+var args = getQuery();
+var inputContent = decodeURIComponent(args['pwd'])
+
 Vue.filter('timeNull', function (obj) {
    if(obj == 0){
    	  return ''
@@ -11,32 +31,61 @@ var newAjax = new Vue({
 		tatalNum:[],
 		list:[],
 		pageNum: 1,
-        pageSize: 20,
-        isMore:true
+        pageSize: 10,
+        inputValue:'',
+        isMore:true,
+        keyNull:false,
+        loading: true,
+        loadHeight:'',
+        htmlChange:'正在加载中',
+        wxShareInfo:{
+            title:"",
+            imgUrl:"",
+            href:window.location.href,
+            desc:""
+        }
 	},
 	mounted: function(){
 		this.getData();
 		window.addEventListener('scroll', this.handleScroll)
+		this.loadHeight=window.innerHeight - 75
+		if(weiChatInit.isWeixinBrowser()){
+            setTimeout(weiChatInit.wxReady(this.wxShareInfo),500)
+        }
 	},
 	methods: {
 		getData: function(){
 			var that = this;
-			var	searchContent = this.$refs.input.value 
+			if(inputContent == 'undefined'){
+				that.inputValue =''
+			}else{
+				that.inputValue = inputContent
+			} 
 			$.ajax({
 				url:changeUrl.address + "/institution/list.do",
 				type:"get",
 				data:{
-					searchKey: searchContent,
+					searchKey: that.inputValue,
 					pageNum: that.pageNum,
         			pageSize: that.pageSize,
 				},
 				success: function(res){
+					that.loading=false
 					that.tatalNum = res
 					that.list=that.list.concat(res.data);
-					if(res.count==0){
-						alert('请输入正确的搜索关键字')
+					if(that.list.length==0){
+						that.keyNull=true
 						that.isMore=false
+					}else{
+						that.keyNull=false
 					}
+					if(that.tatalNum.count<10 || this.pageNum>that.tatalNum.count/this.pageSize){
+						that.loadHeight=0
+						that.htmlChange='已全部加载完毕'
+					}
+					that.wxShareInfo.title = '国际学校四库全书 - 教育机构库'
+					that.wxShareInfo.imgUrl = 'http://data.xinxueshuo.cn/upImage/upInstitutionImg/100062/100062-logo.jpg'
+					that.wxShareInfo.desc = '共有'+that.tatalNum.count+'所机构，查看详情'
 				},
 				error:function(res){
 
@@ -45,13 +94,16 @@ var newAjax = new Vue({
 		},
 		searchClick: function(){
 			this.list=[]
+			window.location.href = './company.html?pwd='+this.inputValue
 			this.getData()
+			
 		},
 		// 回车搜索
 		searchEnterFun:function(e){
             var keyCode = window.event? e.keyCode:e.which;
             if(keyCode == 13){
 				this.list=[]
+				window.location.href = './company.html?pwd='+this.inputValue
 				this.getData()
             }
         },

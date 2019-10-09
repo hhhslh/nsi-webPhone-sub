@@ -13,7 +13,7 @@ a:hover{
 }
 .header{
 	height: 75px;
-    background: -webkit-linear-gradient(top, #5b9ed3 0%,#215089 100%);
+    background: -webkit-linear-gradient(top, #1b78c1 0%,#215089 100%);
     text-align: center;
 }
 .header input{
@@ -41,7 +41,7 @@ a:hover{
 	margin-top:0;
 }
 .list{
-	height:150px;
+	height:135px;
 	background-color: #fff;
 	margin-top:10px;
 	cursor: pointer;
@@ -60,11 +60,16 @@ a:hover{
     padding-left: 14px;
     font-size: 18px;
     font-weight: bold;
-    color:#095375;
+    color:#215089;
 }
 .list p.workPlace{
 	padding-top:5px;
 	overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+.col-xs-7,.col-xs-5{
+    overflow:hidden;
     white-space:nowrap;
     text-overflow: ellipsis;
 }
@@ -80,7 +85,7 @@ a:hover{
 	color:#7b7b7b;
 }
 .list .course{
-	padding: 10px 15px;
+	padding: 8px 15px;
 	color: #7b7b7b;
 	overflow:hidden;
     white-space:nowrap;
@@ -104,7 +109,7 @@ a:hover{
     height: 40px;
     text-align: center;
     line-height: 40px;
-    background-color: #3f3f3f;
+    background-color: #215089;
     border-radius: 8px;
     color: #fafafa;
     box-shadow: 0 5px 15px 0 rgba(15,37,64,.2);

@@ -30,9 +30,18 @@ var newAjax = new Vue({
 	el:'#app',
 	data:{
 		list:[],
+		wxShareInfo:{
+            title:"",
+            imgUrl:"",
+            href:window.location.href,
+            desc:""
+        }
 	},
 	mounted: function(){
 		this.getData();
+		if(weiChatInit.isWeixinBrowser()){
+            setTimeout(weiChatInit.wxReady(this.wxShareInfo),500)
+        }
 	},
 	methods: {
 		getData: function(){
@@ -45,6 +54,9 @@ var newAjax = new Vue({
 				},
 				success: function(res){
 					that.list=res.data;
+					that.wxShareInfo.title = '教育机构库 - ' + that.list.name
+					that.wxShareInfo.imgUrl = 'http://data.xinxueshuo.cn/upImage/upInstitutionImg/100062/100062-logo.jpg'
+					that.wxShareInfo.desc = '成立时间：'+that.list.foundedTime+'，省份：' + that.list.areas + '，简介：' + that.list.introduction.substring(0,20)+'...'
 				},
 				error:function(res){
 

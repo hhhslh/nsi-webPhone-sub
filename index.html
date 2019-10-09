@@ -6,60 +6,95 @@
 	<title>国际学校四库全书</title>
 	<link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-	<link rel="stylesheet" href="https://at.alicdn.com/t/font_946378_kym42x76oc.css">
-	<link rel="stylesheet" href="./css/index/index.css">
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_946378_8mdyxanh9ng.css">
+	<link rel="stylesheet" href="./css/index/index.css?v=0226">
 </head>
 <body>
 <div id="app">
 	<div class="header">
-		<img src="http://data.xinxueshuo.cn/nsi/assets/img/index/logo.png" alt="">
-		<div class="input-group">
-			<span class="input-group-addon iconfont icon-sousuo1" @click="searchClick"></span>
-            <input ref="input" type="text" class="form-control" placeholder="请输入国际学校名或地区等关键词" onfocus="this.placeholder=''" onblur="this.placeholder='请输入国际学校名或地区等关键词'"@keyup.enter="searchEnterFun">
+		<span style="float:right;"><img src="http://data.xinxueshuo.cn/nsi/assets/img/index/logo.png" alt="" style="width: 60%;position: relative;top: -5px;right: -25px;"></span>
+		<div class="all" style="padding-top:36px">
+			<div style="font-size: 20px;letter-spacing: 1px;font-weight: 500;float: left;margin: 0px 0px 8px 30px;" >国际学校四库全书</div>
+			<div class="input-group">
+				<span class="input-group-addon iconfont icon-sousuo1" @click="searchClick"></span>
+	            <input v-model="inputValue" type="text" class="form-control" placeholder="请输入国际学校名或地区等关键词" onfocus="this.placeholder=''" onblur="this.placeholder='请输入国际学校名或地区等关键词'"@keyup.enter="searchEnterFun">
+	        </div>
         </div>
 	</div>
 	<div class="hotSearch">
-		<p>一一一 热门搜索 一一一</p>
+	    <span class="hotLineLeft"></span>
+		<span class="hot">热门搜索</span>
+		<span class="hotLineRight"></span>
 	</div>
 	<div class="searchKey">
-		<a href="../nsi-web-phone/school/detail.html?School_name=100053"><span>海嘉国际双语学校</span></a>
-		<a href="../nsi-web-phone/school/detail.html?School_name=100048"><span>北京乐成国际学校</span></a>
-		<a href="../nsi-web-phone/school/detail.html?School_name=100139"><span>北京京西学校</span></a>
-		<a href="../nsi-web-phone/school/detail.html?School_name=100047"><span>北京BISS国际学校</span></a>
-		<a href="../nsi-web-phone/school/detail.html?School_name=100495"><span>上海哈罗国际学校</span></a>
-		<a href="../nsi-web-phone/school/detail.html?School_name=100122"><span>上海世界外国语中学</span></a>
-		<a href="../nsi-web-phone/school/detail.html?School_name=101194"><span>上海融育北美教育学校</span></a>
-		<a href="../nsi-web-phone/school/detail.html?School_name=100065"><span>成都美视国际学校</span></a>
-		<a href="../nsi-web-phone/school/detail.html?School_name=100192"><span>深圳国际交流学院</span></a>
-		<a href="../nsi-web-phone/school/detail.html?School_name=100954"><span>铁岭枫树岭国际学校</span></a>
+		<a href="../nsi-wap/school/detail.html?School_name=100053"><span>海嘉国际双语学校</span></a>
+		<a href="../nsi-wap/school/detail.html?School_name=100048"><span>北京乐成国际学校</span></a>
+		<a href="../nsi-wap/school/detail.html?School_name=100139"><span>北京京西学校</span></a>
+		<a href="../nsi-wap/school/detail.html?School_name=100047"><span>北京BISS国际学校</span></a>
+		<a href="../nsi-wap/school/detail.html?School_name=100495"><span>上海哈罗国际学校</span></a>
+		<a href="../nsi-wap/school/detail.html?School_name=100122"><span>上海世界外国语中学</span></a>
 	</div>
+	<div class="hotSearch">
+		<span class="hotLineLeft"></span>
+		<span class="hot">行业动态</span>
+		<span class="hotLineRight"></span>
+	</div>
+	<div class="msgList">
+		<div class="newsInfoBox" v-for="item in msgList">
+			<a v-bind:href="'https://www.xinxueshuo.cn/#/news/detailnews/'+item.id">
+				<div class="container" >
+					<div class="row">
+						<div class="col-xs-5">
+							<img :src="item.coverImage" alt="" class="img-responsive">
+						</div> 
+						<div class="col-xs-7 pl0 newsIntro">
+							<h5>{{item.title}}</h5> 
+							<p class="newsInfoBox-time">{{item.summary}}</p>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<a href="https://www.xinxueshuo.cn/#/news/latest" class="toShop">
+		<div class="lookMore">
+			查看更多
+			<span class="iconfont icon-gengduo"></span>
+		</div>
+	</a>
 	<div class="footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-3 part">
 					<a href="./school/school.html">
 						<span class="iconfont icon-jigoujianzhu"></span>
-						<p>学校库</p>
+						<p>国际学校库</p>
 					</a>
 				</div>
 				<div class="col-xs-3 part">
 					<a href="./company/company.html">
 						<span class="iconfont icon-jianzhu"></span>
-						<p>机构库</p>
+						<p>教育机构库</p>
 					</a>
 				</div>
 				<div class="col-xs-3 part">
 					<a href="./talent/talent.html">
 						<span class="iconfont icon-rencai"></span>
-						<p>人才库</p>
+						<p>教育人才库</p>
 					</a>
 				</div>
 				<div class="col-xs-3 part">
-					<a href="./data/data.html">
-						<span class="iconfont icon-recently"></span>
-						<p>项目库</p>
+					<a href="https://www.xinxueshuo.cn/nsi-shop/dist/index.html#/">
+						<span class="iconfont icon-jianzhuwu"></span>
+						<p>教育研究院</p>
 					</a>
 				</div>
+				<!-- <div class="col-xs-3 part">
+					<a href="./data/data.html">
+						<span class="iconfont icon-recently"></span>
+						<p>项目数据库</p>
+					</a>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -67,7 +102,8 @@
 </body>
 </html>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue  "></script>
 <script src="./js/config.js"></script>
-<script src="./js/index/index.js"></script>
+<script src="./js/index/index.js?v=0226"></script>

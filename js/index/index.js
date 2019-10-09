@@ -2,9 +2,12 @@ var newAjax = new Vue({
 	el:'#app',
 	data:{
 		list:[],
+		inputValue:'',
+		msgList:[]
 	},
 	mounted: function(){
 		this.getData();
+		this.getList();
 		window.addEventListener('scroll', this.handleScroll)
 	},
 	methods: {
@@ -28,25 +31,37 @@ var newAjax = new Vue({
 				}
 			})
 		},
+		getList: function(){
+			var that = this;
+			$.ajax({
+				url:changeUrl.address + '/article/list.do',
+				type:"get",
+				data:{
+					pageNum: 1,
+					pageSize: 8
+				},
+				success: function(res){
+					that.msgList=res.data.list.slice(0,3)
+				},
+				error:function(res){
+
+				}
+			})
+		},
 		searchClick: function(){
-			var val = this.$refs.input.value 
-			console.log(val)
-			localStorage.setItem("searchContent",val);
 			this.getData()
-			window.location.href = './school/school.html?pwd='+val
+			window.location.href = './school/school.html?pwd='+this.inputValue
 		},
 		// 回车搜索
 		searchEnterFun:function(e){
             var keyCode = window.event? e.keyCode:e.which;
-            if(keyCode == 13){
-                var val = this.$refs.input.value 
-				console.log(val)
-				localStorage.setItem("searchContent",val);
+            if(keyCode == 13){ 
 				this.getData()
-				window.location.href = './school/school.html?pwd='+val
+				window.location.href = './school/school.html?pwd='+this.inputValue
             }
         },
 
 	}
 	
 });
+

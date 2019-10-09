@@ -30,9 +30,18 @@ var newAjax = new Vue({
 	el:'#app',
 	data:{
 		list:[],
+		wxShareInfo:{
+            title:"",
+            imgUrl:"",
+            href:window.location.href,
+            desc:""
+        }
 	},
 	mounted: function(){
 		this.getData();
+		if(weiChatInit.isWeixinBrowser()){
+            setTimeout(weiChatInit.wxReady(this.wxShareInfo),500)
+        }
 	},
 	methods: {
 		getData: function(){
@@ -45,6 +54,9 @@ var newAjax = new Vue({
 				},
 				success: function(res){
 					that.list=res.data;
+					that.wxShareInfo.title = '项目数据库 - '+that.list.subjectname
+					that.wxShareInfo.imgUrl ='http://data.xinxueshuo.cn/nsi/assets/img/project/project01.jpg'
+					that.wxShareInfo.desc = '项目地点：'+that.list.areas+'，发布单位：' + that.list.company + '，简介：' + that.list.subjectintroduction.substring(0,20)+'...'
 				},
 				error:function(res){
 
